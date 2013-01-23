@@ -1,0 +1,17 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<class name='Socket'>
+<method selector='initWithHost:Port:'>
+<arg index='0' type='@' declared_type='NSString*' name='host'/>
+<arg index='1' type='i' declared_type='int' name='port'/>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='recieveData:'>
+<arg index='0' type='@?' function_pointer='true' declared_type='void (^)(NSString *)' name='block'>
+<arg type='@' declared_type='NSString*'/>
+<retval type='v' declared_type='void'/>
+</arg>
+<retval type='v' declared_type='void'/>
+</method>
+</class>
+</signatures>

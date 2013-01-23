@@ -1,0 +1,33 @@
+#!/usr/local/bin/macruby
+framework "Cocoa"
+require "socket"
+
+cssfile = ARGV[0] || ""
+unless File.exists?(cssfile)
+  warn "USAGE : #{$0} css_file_path"
+  exit
+end
+
+SERVER_PORT = 8000
+SERVER_NAME = "Pixate CSS Notifier"
+
+netservice = NSNetService.alloc.initWithDomain("", type:"_pixate._tcp", name:SERVER_NAME, port:SERVER_PORT)
+netservice.publish
+
+gs = TCPServer.open("", SERVER_PORT)
+addr = gs.addr
+addr.shift
+
+fd = open(cssfile, "r")
+gcdq = Dispatch::Queue.new('pixate')
+mask = Dispatch::Source::VNODE_WRITE | Dispatch::Source::VNODE_EXTEND
+
+while true
+  Thread.start(gs.accept) do |sock|
+  p sock
+    source ||= Dispatch::Source.new(Dispatch::Source::VNODE, fd, mask, gcdq) do
+      fd.rewind
+      sock.write(fd.read)
+    end
+  end
+end
