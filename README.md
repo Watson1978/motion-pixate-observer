@@ -9,13 +9,21 @@ $ gem install motion-pixate-observer
 
 ## Usage
 
+`Rakefile` で `motion-pixate-observer` を require してください。
+```ruby
+require 'rubygems'
+require 'motion-pixate-observer'
+```
+
+メインのコントローラで PixateStyleObserver を include してください。
+
 ```ruby
 class MainViewController < UIViewController
   include PixateStyleObserver  # メインのコントローラで PixateStyleObserver を include する
 
   def viewDidLoad
     super
-    
+
     startObserving # startObserving を呼ぶとサーバを探して通信し始める
 
     ....
@@ -23,7 +31,7 @@ class MainViewController < UIViewController
 
 ```
 
-あらかじめサーバを起動しておきます。
+あらかじめサーバを起動しておきます。サーバを起動する際に MacRuby がインストールされている必要があります。
 ```
 $  ./pixate_server css_file_path
 ```
