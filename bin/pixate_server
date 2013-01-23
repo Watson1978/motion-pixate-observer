@@ -24,7 +24,6 @@ mask = Dispatch::Source::VNODE_WRITE | Dispatch::Source::VNODE_EXTEND
 
 while true
   Thread.start(gs.accept) do |sock|
-  p sock
     source ||= Dispatch::Source.new(Dispatch::Source::VNODE, fd, mask, gcdq) do
       fd.rewind
       sock.write(fd.read)
