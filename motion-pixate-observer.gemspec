@@ -6,9 +6,9 @@ Gem::Specification.new do |gem|
   gem.version       = Version
   gem.authors       = ["Watson"]
   gem.email         = ["watson1978@gmail.com"]
-  gem.description   = %q{motion-pixate-observer}
-  gem.summary       = %q{motion-pixate-observer}
-  gem.homepage      = ""
+  gem.description   = %q{This gem provides a function that you changes css files, apply changes into your application that uses Pixate Framework immediately.}
+  gem.summary       = gem.description
+  gem.homepage      = "https://github.com/Watson1978/motion-pixate-observer"
 
   files = []
   files << 'README.md'
