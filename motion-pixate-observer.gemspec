@@ -13,6 +13,7 @@ Gem::Specification.new do |gem|
   files = []
   files << 'README.md'
   files.concat(Dir.glob('lib/**/*'))
+  files.concat(Dir.glob('bin/**/*'))
   gem.files         = files
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
