@@ -19,7 +19,7 @@ require 'motion-pixate-observer'
 
 ```ruby
 class MainViewController < UIViewController
-  include PixateStyleObserver  # メインのコントローラで PixateStyleObserver を include する
+  include Motion::Pixate::Observer  # メインのコントローラで Motion::Pixate::Observer を include する
 
   def viewDidLoad
     super

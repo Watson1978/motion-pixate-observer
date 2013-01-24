@@ -1,4 +1,4 @@
-module PixateStyleObserver
+module Motion; module Pixate; module Observer
   def startObserving
     @netServiceBrowser = NSNetServiceBrowser.alloc.init
     @netServiceBrowser.delegate = self
@@ -26,4 +26,4 @@ module PixateStyleObserver
   def socketDidReceive(string)
     style(string)
   end
-end
+end; end; end
