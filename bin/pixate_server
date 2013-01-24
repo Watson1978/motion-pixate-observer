@@ -11,19 +11,16 @@ end
 SERVER_PORT = 8000
 SERVER_NAME = "Pixate CSS Notifier"
 
-netservice = NSNetService.alloc.initWithDomain("", type:"_pixate._tcp", name:SERVER_NAME, port:SERVER_PORT)
+netservice = NSNetService.alloc.initWithDomain("", type: "_pixate._tcp", name: SERVER_NAME, port: SERVER_PORT)
 netservice.publish
 
-gs = TCPServer.open("", SERVER_PORT)
-addr = gs.addr
-addr.shift
-
-fd = open(cssfile, "r")
+serv = TCPServer.open("", SERVER_PORT)
+fd   = open(cssfile, "r")
 gcdq = Dispatch::Queue.new('pixate')
 mask = Dispatch::Source::VNODE_WRITE | Dispatch::Source::VNODE_EXTEND
 
 while true
-  Thread.start(gs.accept) do |sock|
+  Thread.start(serv.accept) do |sock|
     source ||= Dispatch::Source.new(Dispatch::Source::VNODE, fd, mask, gcdq) do
       fd.rewind
       sock.write(fd.read)
