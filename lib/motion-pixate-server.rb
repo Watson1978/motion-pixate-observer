@@ -19,10 +19,17 @@ gcdq = Dispatch::Queue.new('pixate')
 mask = Dispatch::Source::VNODE_WRITE | Dispatch::Source::VNODE_EXTEND
 
 while true
-  Thread.start(serv.accept) do |sock|
-    source ||= Dispatch::Source.new(Dispatch::Source::VNODE, fd, mask, gcdq) do
+  conn = serv.accept
+  NSLog "Connected : #{conn.addr[2]}"
+
+  @sock.close if @sock
+  @sock = conn
+
+  Dispatch::Source.new(Dispatch::Source::VNODE, fd, mask, gcdq) do
+    begin
       fd.rewind
-      sock.write(fd.read)
+      @sock.write(fd.read)
+    rescue
     end
   end
 end
