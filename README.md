@@ -49,7 +49,7 @@ class MainViewController < UIViewController
 
 
 ```
-$  ./pixate_server css_file_path
+$  pixate_server css_file_path
 ```
 
 After started server, run your RubyMotion application.
