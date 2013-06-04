@@ -13,6 +13,7 @@ CSS ファイルを変更するたびにアプリをビルドし直す必要も�
 
 - RubyMotion 1.0 or greater (see http://www.rubymotion.com).
 - Pixate Framework 1.0 or greater (see http://www.pixate.com/).
+- MacRuby 0.12+ (see http://macruby.org/)
 
 ## Installation
 
