@@ -7,7 +7,7 @@ unless File.exists?(cssfile)
   exit
 end
 
-SERVER_PORT = 8000
+SERVER_PORT = 54321
 SERVER_NAME = "Pixate CSS Notifier"
 
 netservice = NSNetService.alloc.initWithDomain("", type: "_pixate._tcp", name: SERVER_NAME, port: SERVER_PORT)
