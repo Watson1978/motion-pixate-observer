@@ -2,7 +2,7 @@ module Motion; module Pixate; module Observer
   def startObserving
     @netServiceBrowser = NSNetServiceBrowser.alloc.init
     @netServiceBrowser.delegate = self
-    @netServiceBrowser.searchForServicesOfType("_pixate._tcp", inDomain: "")
+    @netServiceBrowser.searchForServicesOfType("_pixate-observer._tcp", inDomain: "")
   end
 
   def netServiceBrowser(netServiceBrowser,

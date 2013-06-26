@@ -10,7 +10,7 @@ end
 SERVER_PORT = 54321
 SERVER_NAME = "Pixate CSS Notifier"
 
-netservice = NSNetService.alloc.initWithDomain("", type: "_pixate._tcp", name: SERVER_NAME, port: SERVER_PORT)
+netservice = NSNetService.alloc.initWithDomain("", type: "_pixate-observer._tcp", name: SERVER_NAME, port: SERVER_PORT)
 netservice.publish
 
 serv = TCPServer.open("", SERVER_PORT)
