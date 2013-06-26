@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-Version = "0.3"
+Version = "0.4"
 
 Gem::Specification.new do |gem|
   gem.name          = "motion-pixate-observer"
