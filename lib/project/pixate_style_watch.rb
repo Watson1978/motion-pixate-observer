@@ -18,9 +18,9 @@ module Motion; module Pixate; module Observer
   def netServiceDidResolveAddress(service)
     @netService.stop
 
-    socket = Socket.alloc.initWithHost(service.hostName, Port: service.port)
-    socket.delegate = self
-    socket.startReceivingData
+    @socket = Socket.alloc.initWithHost(service.hostName, Port: service.port)
+    @socket.delegate = self
+    @socket.startReceivingData
   end
 
   def socketDidReceive(string)
