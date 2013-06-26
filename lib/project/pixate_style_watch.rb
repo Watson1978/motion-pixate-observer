@@ -12,7 +12,7 @@ module Motion; module Pixate; module Observer
 
     @netService = NSNetService.alloc.initWithDomain(service.domain, type: service.type, name: service.name)
     @netService.delegate = self
-    @netService.resolveWithTimeout(5.0)
+    @netService.resolveWithTimeout(0.0)
   end
 
   def netServiceDidResolveAddress(service)
