@@ -10,13 +10,13 @@ module Motion; module Pixate; module Observer
                         moreComing: moreComing)
     @netServiceBrowser.stop
 
-    service = NSNetService.alloc.initWithDomain(service.domain, type: service.type, name: service.name)
-    service.delegate = self
-    service.resolveWithTimeout(5.0)
+    @netService = NSNetService.alloc.initWithDomain(service.domain, type: service.type, name: service.name)
+    @netService.delegate = self
+    @netService.resolveWithTimeout(5.0)
   end
 
   def netServiceDidResolveAddress(service)
-    service.stop
+    @netService.stop
 
     socket = Socket.alloc.initWithHost(service.hostName, Port: service.port)
     socket.delegate = self
