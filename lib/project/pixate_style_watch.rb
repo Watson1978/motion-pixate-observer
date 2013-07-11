@@ -24,6 +24,7 @@ module Motion; module Pixate; module Observer
   end
 
   def socketDidReceive(string)
+    NSLog(string)
     style(string)
   end
 end; end; end
