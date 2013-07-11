@@ -1,4 +1,31 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
+require "socket"
+require "rubygems"
+require "dnssd"
+require "fssm"
 
-lib_dir_path = File.join(File.dirname(File.expand_path(__FILE__)), "../lib")
-system "/usr/local/bin/macruby #{lib_dir_path}/motion-pixate-server.rb #{ARGV[0]}"
+SERVER_PORT = 54321
+SERVER_NAME = "Pixate CSS Notifier"
+
+cssfile = ARGV[0] || ""
+cssfile = File.expand_path(cssfile)
+unless File.exists?(cssfile)
+  warn "USAGE : #{$0} css_file_path"
+  exit
+end
+
+serv = TCPServer.open("", SERVER_PORT)
+DNSSD.announce(serv, SERVER_NAME, "pixate-observer",)
+
+$sock = serv.accept
+puts "Connected"
+
+FSSM.monitor(File.dirname(cssfile), File.basename(cssfile)) do
+  update do |basedir, filename|
+    File.open("#{basedir}/#{filename}") { |f|
+      data = f.read
+      $sock.write(data)
+      puts "SENT : #{data.bytesize} bytes"
+    }
+  end
+end
