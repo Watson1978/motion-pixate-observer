@@ -57,12 +57,15 @@
                 }
 
                 dispatch_sync(dispatch_get_main_queue(), ^{
-                    NSString *string = [NSString stringWithUTF8String:(const char*)CFDataGetBytePtr(received)];
+                    char *cstr = (char*)CFDataGetBytePtr(received);
+                    cstr[CFDataGetLength(received)] = '\0';
+                    NSString *string = [NSString stringWithUTF8String:cstr];
+                    NSLog(@"Received length = %d\n", [string length]);
                     if ([_delegate respondsToSelector:@selector(socketDidReceive:)]) {
                         [_delegate performSelector:@selector(socketDidReceive:) withObject:string];
                     }
+                    CFDataSetLength(received, 0);
                 });
-                CFDataSetLength(received, 0);
             }
         }
     });
