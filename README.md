@@ -44,7 +44,7 @@ class MainViewController < UIViewController
   end
 ```
 
-- First, you have to start server. Depends on MacRuby when start server.
+- First, you have to start server.
 
 
 ```
