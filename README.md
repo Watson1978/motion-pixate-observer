@@ -1,6 +1,6 @@
 # Motion::Pixate::Observer
 
-This gem provides a function that you changes css files, apply changes into your application that uses Pixate Framework immediately.
+This gem provides a function that you changes css files, apply changes into your application that uses Pixate Framework  /  Pixate Freestyle Framework immediately.
 
 You do not need rebuild your application and any operations.
 Only update your css files.
@@ -12,7 +12,7 @@ CSS ファイルを変更するたびにアプリをビルドし直す必要も�
 ## Requirements
 
 - RubyMotion 1.0 or greater (see http://www.rubymotion.com).
-- Pixate Framework 1.0 or greater (see http://www.pixate.com/).
+- Pixate Framework 1.0 / Pixate Freestyle Framework 2.1 or greater (see http://www.pixate.com/).
 
 ## Installation
 
