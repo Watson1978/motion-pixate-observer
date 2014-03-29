@@ -4,7 +4,7 @@ require "rubygems"
 require "dnssd"
 require "fssm"
 
-SERVER_PORT = 54321
+SERVER_PORT = ARGV[1] || 54321
 SERVER_NAME = "Pixate CSS Notifier"
 
 cssfile = ARGV[0] || ""
@@ -18,7 +18,7 @@ serv = TCPServer.open("", SERVER_PORT)
 DNSSD.announce(serv, SERVER_NAME, "pixate-observer",)
 
 $sock = serv.accept
-puts "Connected"
+puts "#{SERVER_NAME} connected at #{SERVER_PORT}"
 
 FSSM.monitor(File.dirname(cssfile), File.basename(cssfile)) do
   update do |basedir, filename|
